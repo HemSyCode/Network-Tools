@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NsLookup - {{ parent() }}{% endblock %}
+
+{% block header_title %}NsLookup{% endblock %}
+
+{% block header_subtitle %}NsLookup a hostname.{% endblock %}
+
+{% block body %}
+<div>
+    <form method="get">
+        <div class="row mb-3">
+            <div class="col-12 col-md">
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="host" name="host" value="{{ host }}" placeholder="Host">
+                    <label for="host">Host</label>
+                </div>
+            </div>
+            <div class="col-12 col-md">
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="server" name="server" value="{{ server }}" placeholder="Server">
+                    <label for="server">Server</label>
+                </div>
+            </div>
+            <div class="col-12 col-md">
+                <div class="form-floating mb-4">
+                    <select class="form-select" id="type" name="type" required="">
+                        {% for availableTypeKey, availableTypeName in availableTypes %}
+                            <option value="{{ availableTypeKey }}"{% if requestOptions.type == availableTypeKey %} selected{% endif %}>{{ availableTypeName }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="ipversion" class="form-label">Type</label>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+    <hr/>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Domain</th>
+            <th>TTL</th>
+            <th>Class</th>
+            <th>Type</th>
+            <th>Target</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if results|length >= 1 %}
+            {% for result in results %}
+                <tr>
+                    <th>{{ result.domain }}</th>
+                    <th>{{ result.ttl }}</th>
+                    <th>{{ result.class }}</th>
+                    <th>{{ result.type }}</th>
+                    <th>{{ result.target }}</th>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr>
+            <th colspan="5">No record found.</th>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
