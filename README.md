@@ -14,6 +14,13 @@ Requirements
 Installation
 ------------
 
+### System tools installation
+```bash
+apt install dnsutils whois 
+```
+
+### Software installation
+
 Clone repository by running this command:
 
 ```bash

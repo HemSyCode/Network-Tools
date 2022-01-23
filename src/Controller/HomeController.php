@@ -111,5 +111,18 @@ class HomeController extends AbstractController
         ]);
     }
 
+    #[Route('/whois', name: 'whois')]
+    public function whois(): Response
+    {
+
+        $domain = !empty($_GET['domain']) ? $_GET['domain'] : '';
+        $result = !empty($domain) ? $this->basicsService->whois($domain) : '';
+
+        return $this->render('home/whois.html.twig', [
+            'domain' => $domain,
+            'result' => !empty($result) ? $result : '',
+        ]);
+    }
+
 
 }

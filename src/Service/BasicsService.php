@@ -100,6 +100,12 @@ class BasicsService
         return $respArray;
     }
 
+    function whois(string $domain = 'example.com'): string
+    {
+        $result = shell_exec( escapeshellcmd("whois ".$domain) );
+        return !empty($result) ? $result : 'no result';
+    }
+
     /**
      * @return bool
      */
