@@ -4,7 +4,7 @@
 
 {% block header_title %}Whois{% endblock %}
 
-{% block header_subtitle %}Whois a domain.{% endblock %}
+{% block header_subtitle %}Whois a domain / IP address / ASN.{% endblock %}
 
 {% block body %}
 <div>
@@ -12,8 +12,8 @@
         <div class="row mb-3">
             <div class="col-12">
                 <div class="form-floating mb-4">
-                    <input type="text" class="form-control" id="domain" name="domain" value="{{ domain }}" placeholder="Domain">
-                    <label for="domain">Domain</label>
+                    <input type="text" class="form-control" id="domain" name="domain" value="{{ domain }}" placeholder="Domain or IP address or ASN...">
+                    <label for="domain">Domain or IP address or ASN...</label>
                 </div>
             </div>
         </div>
