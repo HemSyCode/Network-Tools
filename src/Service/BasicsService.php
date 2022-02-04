@@ -2,8 +2,6 @@
 
 namespace App\Service;
 
-use Symfony\Component\Process\Process;
-
 class BasicsService
 {
 
@@ -106,9 +104,6 @@ class BasicsService
         return !empty($result) ? $result : 'no result';
     }
 
-    /**
-     * @return bool
-     */
     public function isLinux(): bool
     {
         return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? false : true;

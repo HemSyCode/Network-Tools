@@ -39,3 +39,8 @@ Then:
 ```
 Rename file from ".env.dist" to ".env".
 ```
+
+Application initialization.
+```bash
+$ bash init.sh
+```
